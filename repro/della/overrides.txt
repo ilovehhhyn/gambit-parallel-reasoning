@@ -1,0 +1,7 @@
+# Forces the ANTLR runtime that latex2sympy2 needs, so gambit/tests/evaluator.py can be imported.
+# gambit/requirements.txt pins 4.11 while latex2sympy2 1.9.1 pins 4.7.2, so a strict resolver
+# rejects the file as written. With 4.11, `from latex2sympy2 import latex2sympy` raises at import
+# ("Could not deserialize ATN"), so benchmark_eval.py cannot start. With 4.7.2, sympy's
+# parse_latex raises ImportError when called, and evaluator.math_equal catches it and falls
+# back to parse_expr and latex2sympy.
+antlr4-python3-runtime==4.7.2
